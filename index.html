@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>iPhone 6.1" Mockup — 390×844 CSS px</title>
+
+  <!-- iOS / Safari icons (placeholders - replace href with your actual images) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <style>
+    :root{
+      --device-w: 390px;
+      --device-h: 844px;
+      --bg: linear-gradient(180deg,#111827 0%, #0b1220 100%);
+      --card: #0f1724;
+      --accent: #ef4444;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      background:var(--bg);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    }
+    .device {
+      width: min(100%, var(--device-w));
+      height: calc(min(100vh, var(--device-h)));
+      margin: 24px auto;
+      border-radius: 28px;
+      box-shadow: 0 30px 60px rgba(2,6,23,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
+      overflow: hidden;
+      position:relative;
+      -webkit-overflow-scrolling:touch;
+      background: linear-gradient(180deg,#07202a,#041018);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .statusbar{
+      height: env(safe-area-inset-top, 44px);
+      min-height:44px;
+      padding: 6px 12px;
+      box-sizing:border-box;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      color: #d1d5db;
+      font-size:12px;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+    }
+
+    .status-left{display:flex; gap:8px; align-items:center;}
+    .status-right{display:flex; gap:8px; align-items:center;}
+
+    .app {
+      height: calc(100% - env(safe-area-inset-top,44px));
+      padding: 14px;
+      box-sizing: border-box;
+      color:#e6eef8;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      overflow:auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .message-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;
+      padding:12px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.02);
+      max-width: 360px;
+    }
+
+    .bubble {
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .avatar {
+      width:48px;height:48px;border-radius:12px;flex:0 0 48px;
+      background:linear-gradient(135deg,#ffb4c6,#ff8aa2);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;color:#111;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+    }
+
+    .content{
+      background: linear-gradient(180deg,#0b1220,#08101a);
+      padding:10px 12px;border-radius:12px;
+      border:1px solid rgba(255,255,255,0.02);
+      color:#cfe8ff;font-size:15px;
+      line-height:1.2;
+      box-shadow: inset 0 1px rgba(255,255,255,0.02);
+    }
+
+    .meta{font-size:12px;color:#9fb0c9;margin-top:6px;}
+
+    .home-indicator{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom: env(safe-area-inset-bottom, 8px);
+      width:134px;
+      height:5px;
+      border-radius:999px;
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+    }
+
+    @media (max-width:420px){
+      .device{transform: scale(calc(100vw / 420)); transform-origin: top;}
+    }
+  </style>
+</head>
+<body>
+  <div class="device" role="application" aria-label="iPhone 6.1 inch mockup">
+    <div class="statusbar" aria-hidden="true">
+      <div class="status-left"><span>9:41</span></div>
+      <div class="status-right">
+        <span>LTE</span>
+        <span>🔋100%</span>
+      </div>
+    </div>
+
+    <main class="app">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h3 style="margin:0;font-size:16px">Ultra — Demo</h3>
+        <div style="font-size:13px;color:#9fb0c9">iPhone 6.1" • iOS 18.4.1</div>
+      </div>
+
+      <section class="message-card">
+        <div class="bubble">
+          <div class="avatar" aria-hidden="true">T-M</div>
+          <div>
+            <div class="content"><strong>T-Mobi-chan</strong> — Hi Oscar! Your bill of <strong>$167.00</strong> is now available. AutoPay is scheduled for <em>08/11/2025</em>. <br><a href="#" style="color:var(--accent);text-decoration:underline">View bill details</a></div>
+            <div class="meta">Delivered • 08/11/25</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="message-card" style="display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:14px;color:#9fb0c9">Device info (for devs)</div>
+        <pre style="margin:0;background:transparent;border:0;color:#bcd9ff;font-size:13px">CSS viewport: 390 × 844 px
+Physical pixels: 1170 × 2532 px
+devicePixelRatio: 3
+iOS: 18.4.1</pre>
+      </section>
+
+      <div style="flex:1"></div>
+      <div style="font-size:12px;color:#8da1bf">Tip: Replace the apple-touch-icon hrefs in &lt;head&gt; with your actual icons for iOS home-screen support.</div>
+    </main>
+
+    <div class="home-indicator" aria-hidden="true"></div>
+  </div>
+</body>
+</html>
