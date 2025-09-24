@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Skylark e — Previous Releases</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon-180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <style>
+    :root {--device-w:390px;--device-h:844px;--bg:linear-gradient(180deg,#111827 0%,#0b1220 100%);--accent:#3b82f6;}
+    html,body{height:100%;margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+    .device{width:min(100%,var(--device-w));height:calc(min(100vh,var(--device-h)));margin:24px auto;border-radius:28px;overflow:hidden;position:relative;background:linear-gradient(180deg,#07202a,#041018);border:1px solid rgba(255,255,255,0.03);box-shadow:0 30px 60px rgba(2,6,23,0.7), inset 0 1px 0 rgba(255,255,255,0.02);}
+    .statusbar{height:env(safe-area-inset-top,44px);min-height:44px;padding:6px 12px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#d1d5db;background:rgba(255,255,255,0.02);backdrop-filter:blur(6px);}
+    .app{height:calc(100% - env(safe-area-inset-top,44px));padding:16px;display:flex;flex-direction:column;gap:14px;color:#e6eef8;overflow:auto;}
+    .message-card{background:rgba(255,255,255,0.03);border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.05);box-shadow:0 6px 18px rgba(0,0,0,0.4);}
+    .btn-link{display:inline-block;background:var(--accent);color:#fff;padding:10px 18px;border-radius:10px;font-weight:600;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.4);transition:background 0.2s;}
+    .btn-link:hover{background:#2563eb;}
+    .home-indicator{position:absolute;bottom:env(safe-area-inset-bottom,8px);left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:999px;background:rgba(255,255,255,0.08);}
+  </style>
+</head>
+<body>
+  <div class="device">
+    <div class="statusbar">
+      <span>9:41</span>
+      <span>LTE 🔋100%</span>
+    </div>
+
+    <main class="app">
+      <h2 style="margin:0;font-size:18px">📦 Previous Releases</h2>
+
+      <!-- v1.1 -->
+      <section class="message-card">
+        <div style="font-size:14px;color:#9fb0c9;">Version 1.1 — 09/15/25</div>
+        <a href="https://www.icloud.com/shortcuts/YOUR_LINK_HERE" target="_blank" style="color:var(--accent);text-decoration:underline;">Download</a>
+        <div style="margin-top:4px;font-size:13px;color:#cfe8ff;line-height:1.4;">
+          • Added bug fixes and refinements
+        </div>
+      </section>
+
+      <!-- v1.0 -->
+      <section class="message-card">
+        <div style="font-size:14px;color:#9fb0c9;">Version 1.0 — 08/11/25</div>
+        <a href="https://www.icloud.com/shortcuts/YOUR_LINK_HERE" target="_blank" style="color:var(--accent);text-decoration:underline;">Download</a>
+        <div style="margin-top:4px;font-size:13px;color:#cfe8ff;line-height:1.4;">
+          • Initial release of Skylark e
+        </div>
+      </section>
+
+      <!-- Back Button -->
+      <section class="message-card" style="text-align:center">
+        <a href="../" class="btn-link">⬅️ Back to Main Release</a>
+      </section>
+    </main>
+
+    <div class="home-indicator"></div>
+  </div>
+</body>
+</html>
