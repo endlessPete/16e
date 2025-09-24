@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Skylark e </title>
+  <title>Skylark e — Release Channel (beta)</title>
 
-  <!-- iOS / Safari icons (placeholders - replace href with your actual images) -->
+  <!-- iOS / Safari icons (replace href with real icons later) -->
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180.png">
   <link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167.png">
   <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152.png">
@@ -14,180 +14,198 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
   <style>
-    :root{
+    :root {
       --device-w: 390px;
       --device-h: 844px;
       --bg: linear-gradient(180deg,#111827 0%, #0b1220 100%);
       --card: #0f1724;
-      --accent: #ef4444;
+      --accent: #3b82f6;
     }
 
-    html,body{
-      height:100%;
-      margin:0;
-      background:var(--bg);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
     }
+
     .device {
       width: min(100%, var(--device-w));
       height: calc(min(100vh, var(--device-h)));
       margin: 24px auto;
       border-radius: 28px;
-      box-shadow: 0 30px 60px rgba(2,6,23,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
       overflow: hidden;
-      position:relative;
-      -webkit-overflow-scrolling:touch;
+      position: relative;
       background: linear-gradient(180deg,#07202a,#041018);
       border: 1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 30px 60px rgba(2,6,23,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
     }
 
-    .statusbar{
+    .statusbar {
       height: env(safe-area-inset-top, 44px);
-      min-height:44px;
+      min-height: 44px;
       padding: 6px 12px;
-      box-sizing:border-box;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
       color: #d1d5db;
-      font-size:12px;
+      background: rgba(255,255,255,0.02);
       backdrop-filter: blur(6px);
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
     }
-
-    .status-left{display:flex; gap:8px; align-items:center;}
-    .status-right{display:flex; gap:8px; align-items:center;}
 
     .app {
-      height: calc(100% - env(safe-area-inset-top,44px));
-      padding: 14px;
-      box-sizing: border-box;
-      color:#e6eef8;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      overflow:auto;
-      -webkit-overflow-scrolling: touch;
+      height: calc(100% - env(safe-area-inset-top, 44px));
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      color: #e6eef8;
+      overflow: auto;
     }
 
-    .message-card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:14px;
-      padding:12px;
-      box-shadow: 0 6px 18px rgba(2,6,23,0.6);
-      border:1px solid rgba(255,255,255,0.02);
-      max-width: 360px;
+    .message-card {
+      background: rgba(255,255,255,0.03);
+      border-radius: 14px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
     }
 
     .bubble {
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
     }
+
     .avatar {
-      width:48px;height:48px;border-radius:12px;flex:0 0 48px;
-      background:linear-gradient(135deg,#b4d4ff,#8aa2ff);
-      display:flex;align-items:center;justify-content:center;
-      font-weight:700;color:#111;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      flex: 0 0 48px;
+      background: linear-gradient(135deg,#60a5fa,#2563eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #fff;
     }
 
-    .content{
+    .content {
       background: linear-gradient(180deg,#0b1220,#08101a);
-      padding:10px 12px;border-radius:12px;
-      border:1px solid rgba(255,255,255,0.02);
-      color:#cfe8ff;font-size:15px;
-      line-height:1.2;
-      box-shadow: inset 0 1px rgba(255,255,255,0.02);
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 15px;
+      line-height: 1.4;
+      border: 1px solid rgba(255,255,255,0.05);
     }
-
-    .meta{font-size:12px;color:#9fb0c9;margin-top:6px;}
 
     .btn-link {
-      display:inline-block;
-      background:var(--accent);
-      color:#fff;
-      font-size:15px;
-      padding:8px 16px;
-      border-radius:10px;
-      font-weight:600;
-      text-decoration:none;
-      cursor:pointer;
-      box-shadow:0 4px 12px rgba(0,0,0,0.4);
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: background 0.2s;
     }
 
-    .home-indicator{
-      position:absolute;
-      left:50%;
-      transform:translateX(-50%);
+    .btn-link:hover {
+      background: #2563eb;
+    }
+
+    .meta { font-size: 12px; color: #9fb0c9; margin-top: 6px; }
+    .home-indicator {
+      position: absolute;
       bottom: env(safe-area-inset-bottom, 8px);
-      width:134px;
-      height:5px;
-      border-radius:999px;
-      background: rgba(255,255,255,0.06);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.6);
-    }
-
-    @media (max-width:420px){
-      .device{transform: scale(calc(100vw / 420)); transform-origin: top;}
+      left: 50%;
+      transform: translateX(-50%);
+      width: 134px;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
     }
   </style>
 </head>
 <body>
-  <div class="device" role="application" aria-label="iPhone 6.1 inch mockup">
-    <div class="statusbar" aria-hidden="true">
-      <div class="status-left"><span>9:41</span></div>
-      <div class="status-right">
-        <span>LTE</span>
-        <span>🔋100%</span>
-      </div>
+  <div class="device">
+    <div class="statusbar">
+      <span>9:41</span>
+      <span>LTE 🔋100%</span>
     </div>
 
     <main class="app">
-      <div style="display:flex;justify-content:space-between;align-items:center;">
-        <h3 style="margin:0;font-size:16px">Skylark e</h3>
-        <div style="font-size:13px;color:#9fb0c9">iPhone 6.1" • iOS 18.4.1</div>
-      </div>
+      <h2 style="margin:0;font-size:18px">🚀 Skylark e — Siri Shortcut</h2>
 
-      <!-- Skylark e Announcement -->
+      <!-- Announcement -->
       <section class="message-card">
         <div class="bubble">
-          <div class="avatar" aria-hidden="true">S-E</div>
+          <div class="avatar">S</div>
           <div>
             <div class="content">
-              <strong>Prymus &amp; Skylark Inc</strong> (a terralinkslab company) presents to you <strong>Skylark e</strong>, follow 
-              <a href="https://x.com/skylark_e?s=21" style="color:var(--accent);text-decoration:underline">@Skylark_e</a> for updates
+              <strong>Prymus &amp; Skylark Inc</strong> (a terralinkslab company) presents <strong>Skylark e</strong>.  
+              Follow <a href="https://x.com/skylark_e?s=21" target="_blank" style="color:var(--accent);text-decoration:underline;">@Skylark_e</a> for updates!
             </div>
-            <div class="meta">Announcement • 09/14/25</div>
+            <div class="meta">Release • 09/14/25</div>
           </div>
         </div>
       </section>
 
-      <!-- Skylark e CTA -->
-      <section class="message-card" style="display:flex;flex-direction:column;gap:10px;align-items:flex-start;">
-        <a href="https://www.icloud.com/shortcuts/e228f427a7e040778a03c82322c27e9c" class="btn-link">Get Skylark e</a>
-        <div style="font-size:13px;color:#9fb0c9;">Version 1.2</div>
-        <div style="font-size:13px;color:#cfe8ff;line-height:1.3;">
-          <strong>Changelog:</strong><br>
-          • Adds Quick Menu
-          • bug fixes
+      <!-- Download -->
+      <section class="message-card" style="text-align:center">
+        <a href="https://www.icloud.com/shortcuts/e228f427a7e040778a03c82322c27e9c" 
+           target="_blank" class="btn-link">Get Skylark e</a>
+        <div style="margin-top:8px;font-size:13px;color:#9fb0c9;">Version 1.0.0</div>
+      </section>
+
+      <!-- Changelog -->
+      <section class="message-card">
+        <h3 style="margin:0 0 6px 0;font-size:15px;color:#cfe8ff;">Changelog</h3>
+        <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.4;">
+          <li>Initial release of Skylark e</li>
+          <li>Core features enabled</li>
+          <li>UI refinements and bug fixes</li>
+        </ul>
+      </section>
+
+      <!-- Requirements -->
+      <section class="message-card">
+        <h3 style="margin:0 0 6px 0;font-size:15px;color:#cfe8ff;">Requirements</h3>
+        <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.4;">
+          <li>iOS / iPadOS 18.0 or later</li>
+          <li>Shortcuts app installed (pre-installed on iOS)</li>
+          <li>iCloud account (needed to add the shortcut)</li>
+        </ul>
+      </section>
+
+      <!-- Previous Releases -->
+      <section class="message-card">
+        <h3 style="margin:0 0 6px 0;font-size:15px;color:#cfe8ff;">Previous Releases</h3>
+
+        <div style="margin-bottom:12px;">
+          <div style="font-size:14px;color:#9fb0c9;">Version 0.9.0 — 09/01/25</div>
+          <a href="https://www.icloud.com/shortcuts/YOUR_LINK_HERE" target="_blank" 
+             style="color:var(--accent);text-decoration:underline;">Download</a>
+          <div style="margin-top:4px;font-size:13px;color:#cfe8ff;line-height:1.4;">
+            • Beta release of Skylark e <br>
+            • Core framework testing
+          </div>
+        </div>
+
+        <div style="margin-bottom:12px;">
+          <div style="font-size:14px;color:#9fb0c9;">Version 0.8.0 — 08/15/25</div>
+          <a href="https://www.icloud.com/shortcuts/YOUR_LINK_HERE" target="_blank" 
+             style="color:var(--accent);text-decoration:underline;">Download</a>
+          <div style="margin-top:4px;font-size:13px;color:#cfe8ff;line-height:1.4;">
+            • Early internal test build
+          </div>
         </div>
       </section>
-
-      <!-- Dev info -->
-      <section class="message-card" style="display:flex;flex-direction:column;gap:8px;">
-        <div style="font-size:14px;color:#9fb0c9">Device info (for devs)</div>
-        <pre style="margin:0;background:transparent;border:0;color:#bcd9ff;font-size:13px">CSS viewport: 390 × 844 px
-Physical pixels: 1170 × 2532 px
-devicePixelRatio: 3
-iOS: 18.4.1</pre>
-      </section>
-
-      <div style="flex:1"></div>
-      <div style="font-size:12px;color:#8da1bf">Tip: Replace the apple-touch-icon hrefs in &lt;head&gt; with your actual icons for iOS home-screen support.</div>
     </main>
 
-    <div class="home-indicator" aria-hidden="true"></div>
+    <div class="home-indicator"></div>
   </div>
 </body>
 </html>
