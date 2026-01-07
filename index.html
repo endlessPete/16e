@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Skylark e — Release Page (Beta)</title>
+  <title>Skylark e — Release Page</title>
 
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -55,9 +55,11 @@
         </div>
       </section>
 
-      <!-- Download -->
+      <!-- Download with iOS version check -->
       <section class="message-card" style="text-align:center">
-        <a href="https://www.icloud.com/shortcuts/231320e574da4c9a96993bd67a54aa87" target="_blank" class="btn-link">Get Skylark e</a>
+        <a id="downloadBtn" href="https://www.icloud.com/shortcuts/231320e574da4c9a96993bd67a54aa87" target="_blank" class="btn-link">
+          Get Skylark e
+        </a>
         <div style="margin-top:8px;font-size:13px;color:#9fb0c9;">Version 1.3</div>
       </section>
 
@@ -65,7 +67,7 @@
       <section class="message-card">
         <h3 style="margin:0 0 6px;font-size:15px;color:#cfe8ff;">Changelog</h3>
         <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.4;">
-          <li>adds Favorites and changes</li>
+          <li>Adds Favorites and changes</li>
         </ul>
       </section>
 
@@ -87,5 +89,28 @@
 
     <div class="home-indicator"></div>
   </div>
+
+  <script>
+    // Detect iOS / iPadOS version
+    function getiOSVersion() {
+      if (/iP(hone|od|ad)/.test(navigator.platform)) {
+        const match = navigator.userAgent.match(/OS (\d+)_?(\d+)?/);
+        if (match) {
+          return parseFloat(match[1] + '.' + (match[2] || '0'));
+        }
+      }
+      return null;
+    }
+
+    const version = getiOSVersion();
+    const btn = document.getElementById('downloadBtn');
+
+    if (version !== null && version < 18.0) {
+      btn.textContent = "Not Supported";
+      btn.style.pointerEvents = "none"; // disables click
+      btn.style.backgroundColor = "#6b7280"; // gray color
+      btn.style.opacity = "0.6";
+    }
+  </script>
 </body>
 </html>
