@@ -17,12 +17,14 @@
       --bg: linear-gradient(180deg,#111827 0%, #0b1220 100%);
       --accent: #3b82f6;
     }
+
     html, body {
       height:100%;
       margin:0;
       background:var(--bg);
       font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
     }
+
     .device {
       width:min(100%,var(--device-w));
       height:calc(min(100vh,var(--device-h)));
@@ -34,6 +36,7 @@
       border:1px solid rgba(255,255,255,0.03);
       box-shadow:0 30px 60px rgba(2,6,23,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
     }
+
     .statusbar {
       height:env(safe-area-inset-top,44px);
       min-height:44px;
@@ -46,6 +49,7 @@
       background:rgba(255,255,255,0.02);
       backdrop-filter:blur(6px);
     }
+
     .app {
       height:calc(100% - env(safe-area-inset-top,44px));
       padding:16px;
@@ -55,6 +59,7 @@
       color:#e6eef8;
       overflow:auto;
     }
+
     .message-card {
       background:rgba(255,255,255,0.03);
       border-radius:14px;
@@ -62,16 +67,17 @@
       border:1px solid rgba(255,255,255,0.05);
       box-shadow:0 6px 18px rgba(0,0,0,0.4);
     }
+
     .bubble {
       display:flex;
       gap:10px;
       align-items:flex-start;
     }
+
     .avatar {
       width:48px;
       height:48px;
       border-radius:12px;
-      flex:0 0 48px;
       background:linear-gradient(135deg,#60a5fa,#2563eb);
       display:flex;
       align-items:center;
@@ -79,6 +85,7 @@
       font-weight:700;
       color:#fff;
     }
+
     .content {
       background:linear-gradient(180deg,#0b1220,#08101a);
       padding:12px;
@@ -87,6 +94,7 @@
       line-height:1.4;
       border:1px solid rgba(255,255,255,0.05);
     }
+
     .btn-link {
       display:inline-block;
       background:var(--accent);
@@ -96,19 +104,20 @@
       font-weight:600;
       text-decoration:none;
       box-shadow:0 4px 12px rgba(0,0,0,0.4);
-      transition:background 0.2s;
     }
-    .btn-link:hover { background:#2563eb; }
+
     .btn-disabled {
       background:#6b7280 !important;
       opacity:0.6;
       pointer-events:none;
     }
+
     .meta {
       font-size:12px;
       color:#9fb0c9;
       margin-top:6px;
     }
+
     .home-indicator {
       position:absolute;
       bottom:env(safe-area-inset-bottom,8px);
@@ -123,101 +132,110 @@
 </head>
 
 <body>
-  <div class="device">
-    <div class="statusbar">
-      <span>9:41</span>
-      <span id="battery">🔋100%</span>
-    </div>
-
-    <main class="app">
-      <h2 style="margin:0;font-size:18px">🚀 Skylark e — Siri Shortcut</h2>
-
-      <!-- Announcement -->
-      <section class="message-card">
-        <div class="bubble">
-          <div class="avatar">S</div>
-          <div>
-            <div class="content">
-              <strong>Prymus &amp; Skylark Inc</strong> (a terralinkslab company) presents <strong>Skylark e</strong>.  
-              Follow <a href="https://x.com/skylark_e?s=21" target="_blank" style="color:var(--accent);text-decoration:underline;">@Skylark_e</a> for updates!
-            </div>
-            <div class="meta">Release • 12/31/25</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Download -->
-      <section class="message-card" style="text-align:center">
-        <a id="downloadBtn"
-           href="https://www.icloud.com/shortcuts/231320e574da4c9a96993bd67a54aa87"
-           target="_blank"
-           class="btn-link">
-          Get Skylark e
-        </a>
-        <div style="margin-top:8px;font-size:13px;color:#9fb0c9;">Version 1.3</div>
-      </section>
-
-      <!-- Changelog -->
-      <section class="message-card">
-        <h3 style="margin:0 0 6px;font-size:15px;color:#cfe8ff;">Changelog</h3>
-        <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.4;">
-          <li>Adds Favorites and changes</li>
-        </ul>
-      </section>
-
-      <!-- Requirements -->
-      <section class="message-card">
-        <h3 style="margin:0 0 6px;font-size:15px;color:#cfe8ff;">Requirements</h3>
-        <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.4;">
-          <li>iOS / iPadOS 18.0 or later</li>
-          <li>Shortcuts app installed</li>
-          <li>iCloud account required</li>
-        </ul>
-      </section>
-
-      <!-- Navigation -->
-      <section class="message-card" style="text-align:center">
-        <a id="previousBtn" href="previous/" class="btn-link">
-          📦 View Previous Releases
-        </a>
-      </section>
-    </main>
-
-    <div class="home-indicator"></div>
+<div class="device">
+  <div class="statusbar">
+    <span>9:41</span>
+    <span>LTE 🔋<span id="batteryPct">100</span>%</span>
   </div>
 
-  <script>
-    // iOS version detection
-    function getiOSVersion() {
-      if (/iP(hone|od|ad)/.test(navigator.platform)) {
-        const match = navigator.userAgent.match(/OS (\d+)_?(\d+)?/);
-        if (match) {
-          return parseFloat(match[1] + '.' + (match[2] || '0'));
-        }
-      }
-      return null;
-    }
+  <main class="app">
+    <h2 style="margin:0;font-size:18px">🚀 Skylark e — Siri Shortcut</h2>
 
-    const ios = getiOSVersion();
+    <!-- Announcement -->
+    <section class="message-card">
+      <div class="bubble">
+        <div class="avatar">S</div>
+        <div>
+          <div class="content">
+            <strong>Prymus &amp; Skylark Inc</strong> (a terralinkslab company) presents
+            <strong>Skylark e</strong>.<br>
+            Follow
+            <a href="https://x.com/skylark_e?s=21" target="_blank"
+               style="color:var(--accent);text-decoration:underline;">
+              @Skylark_e
+            </a>
+            for updates.
+          </div>
+          <div class="meta">Release • 12/31/25</div>
+        </div>
+      </div>
+    </section>
 
-    // Disable Previous Releases for iOS < 18
-    const previousBtn = document.getElementById("previousBtn");
-    if (ios !== null && ios < 18.0) {
-      previousBtn.classList.add("btn-disabled");
-      previousBtn.textContent = "📦 Previous Releases (iOS 18+)";
-    }
+    <!-- Download -->
+    <section class="message-card" style="text-align:center">
+      <a id="downloadBtn"
+         href="https://www.icloud.com/shortcuts/231320e574da4c9a96993bd67a54aa87"
+         target="_blank"
+         class="btn-link">
+        Get Skylark e
+      </a>
+      <div style="margin-top:8px;font-size:13px;color:#9fb0c9;">Version 1.2</div>
+    </section>
 
-    // Battery percentage (fallback stays 100%)
-    const batteryEl = document.getElementById("battery");
-    if ("getBattery" in navigator) {
-      navigator.getBattery().then(battery => {
-        const update = () => {
-          batteryEl.textContent = "🔋" + Math.round(battery.level * 100) + "%";
-        };
-        update();
-        battery.addEventListener("levelchange", update);
-      });
+    <!-- Changelog -->
+    <section class="message-card">
+      <h3 style="margin:0 0 6px;font-size:15px;color:#cfe8ff;">Changelog</h3>
+      <ul style="margin:0;padding-left:18px;font-size:14px;">
+        <li>Added Quick Menu</li>
+      </ul>
+    </section>
+
+    <!-- Requirements -->
+    <section class="message-card">
+      <h3 style="margin:0 0 6px;font-size:15px;color:#cfe8ff;">Requirements</h3>
+      <ul style="margin:0;padding-left:18px;font-size:14px;">
+        <li>iOS / iPadOS 18.0 or later</li>
+        <li>Shortcuts app installed</li>
+        <li>iCloud account required</li>
+      </ul>
+    </section>
+
+    <!-- Previous Releases -->
+    <section class="message-card" style="text-align:center">
+      <a id="prevBtn" href="previous/" class="btn-link">
+        📦 View Previous Releases
+      </a>
+    </section>
+  </main>
+
+  <div class="home-indicator"></div>
+</div>
+
+<script>
+  /* iOS version detection */
+  function getiOSVersion() {
+    const match = navigator.userAgent.match(/OS (\d+)_?(\d+)?/);
+    if (match) {
+      return parseFloat(match[1] + "." + (match[2] || "0"));
     }
-  </script>
+    return null;
+  }
+
+  const ios = getiOSVersion();
+  const downloadBtn = document.getElementById("downloadBtn");
+  const prevBtn = document.getElementById("prevBtn");
+
+  if (ios !== null && ios < 18.0) {
+    downloadBtn.textContent = "Not Supported (iOS 18+)";
+    downloadBtn.classList.add("btn-disabled");
+    downloadBtn.removeAttribute("href");
+
+    prevBtn.classList.add("btn-disabled");
+    prevBtn.removeAttribute("href");
+  }
+
+  /* Battery percentage */
+  const batteryEl = document.getElementById("batteryPct");
+
+  if (navigator.getBattery) {
+    navigator.getBattery().then(battery => {
+      batteryEl.textContent = Math.round(battery.level * 100);
+    }).catch(() => {
+      batteryEl.textContent = "100";
+    });
+  } else {
+    batteryEl.textContent = "100";
+  }
+</script>
 </body>
 </html>
