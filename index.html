@@ -17,31 +17,124 @@
       --bg: linear-gradient(180deg,#111827 0%, #0b1220 100%);
       --accent: #3b82f6;
     }
-    html, body {height:100%;margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
-    .device {width:min(100%,var(--device-w));height:calc(min(100vh,var(--device-h)));margin:24px auto;border-radius:28px;overflow:hidden;position:relative;background:linear-gradient(180deg,#07202a,#041018);border:1px solid rgba(255,255,255,0.03);box-shadow:0 30px 60px rgba(2,6,23,0.7), inset 0 1px 0 rgba(255,255,255,0.02);}
-    .statusbar {height:env(safe-area-inset-top,44px);min-height:44px;padding:6px 12px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#d1d5db;background:rgba(255,255,255,0.02);backdrop-filter:blur(6px);}
-    .app {height:calc(100% - env(safe-area-inset-top,44px));padding:16px;display:flex;flex-direction:column;gap:14px;color:#e6eef8;overflow:auto;}
-    .message-card {background:rgba(255,255,255,0.03);border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.05);box-shadow:0 6px 18px rgba(0,0,0,0.4);}
-    .bubble {display:flex;gap:10px;align-items:flex-start;}
-    .avatar {width:48px;height:48px;border-radius:12px;flex:0 0 48px;background:linear-gradient(135deg,#60a5fa,#2563eb);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;}
-    .content {background:linear-gradient(180deg,#0b1220,#08101a);padding:12px;border-radius:12px;font-size:15px;line-height:1.4;border:1px solid rgba(255,255,255,0.05);}
-    .btn-link {display:inline-block;background:var(--accent);color:#fff;padding:10px 18px;border-radius:10px;font-weight:600;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.4);transition:background 0.2s;}
-    .btn-link:hover {background:#2563eb;}
-    .meta {font-size:12px;color:#9fb0c9;margin-top:6px;}
-    .home-indicator {position:absolute;bottom:env(safe-area-inset-bottom,8px);left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:999px;background:rgba(255,255,255,0.08);}
+
+    html, body {
+      height:100%;
+      margin:0;
+      background:var(--bg);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    }
+
+    .device {
+      width:min(100%,var(--device-w));
+      height:calc(min(100vh,var(--device-h)));
+      margin:24px auto;
+      border-radius:28px;
+      overflow:hidden;
+      position:relative;
+      background:linear-gradient(180deg,#07202a,#041018);
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow:0 30px 60px rgba(2,6,23,0.7);
+    }
+
+    .statusbar {
+      height:env(safe-area-inset-top,44px);
+      min-height:44px;
+      padding:6px 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-size:12px;
+      color:#d1d5db;
+      background:rgba(255,255,255,0.02);
+      backdrop-filter:blur(6px);
+    }
+
+    .app {
+      height:calc(100% - env(safe-area-inset-top,44px));
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      color:#e6eef8;
+      overflow:auto;
+    }
+
+    .message-card {
+      background:rgba(255,255,255,0.03);
+      border-radius:14px;
+      padding:14px;
+      border:1px solid rgba(255,255,255,0.05);
+      box-shadow:0 6px 18px rgba(0,0,0,0.4);
+    }
+
+    .bubble {
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+
+    .avatar {
+      width:48px;
+      height:48px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#60a5fa,#2563eb);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      color:#fff;
+    }
+
+    .content {
+      background:linear-gradient(180deg,#0b1220,#08101a);
+      padding:12px;
+      border-radius:12px;
+      font-size:15px;
+      line-height:1.4;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .btn-link {
+      display:inline-block;
+      background:var(--accent);
+      color:#fff;
+      padding:10px 18px;
+      border-radius:10px;
+      font-weight:600;
+      text-decoration:none;
+      box-shadow:0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .btn-disabled {
+      background:#6b7280 !important;
+      opacity:0.6;
+      pointer-events:none;
+    }
+
+    .home-indicator {
+      position:absolute;
+      bottom:env(safe-area-inset-bottom,8px);
+      left:50%;
+      transform:translateX(-50%);
+      width:134px;
+      height:5px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.08);
+    }
   </style>
 </head>
+
 <body>
   <div class="device">
     <div class="statusbar">
       <span>9:41</span>
-      <span>LTE 🔋100%</span>
+      <span id="battery">🔋—%</span>
     </div>
 
     <main class="app">
       <h2 style="margin:0;font-size:18px">🚀 Skylark e — Siri Shortcut</h2>
 
-      <!-- Announcement -->
       <section class="message-card">
         <div class="bubble">
           <div class="avatar">S</div>
@@ -55,35 +148,27 @@
         </div>
       </section>
 
-      <!-- Download with iOS version check -->
       <section class="message-card" style="text-align:center">
-        <a id="downloadBtn" href="https://www.icloud.com/shortcuts/231320e574da4c9a96993bd67a54aa87" target="_blank" class="btn-link">
+        <a id="downloadBtn"
+           href="https://www.icloud.com/shortcuts/231320e574da4c9a96993bd67a54aa87"
+           target="_blank"
+           class="btn-link">
           Get Skylark e
         </a>
         <div style="margin-top:8px;font-size:13px;color:#9fb0c9;">Version 1.3</div>
       </section>
 
-      <!-- Changelog -->
-      <section class="message-card">
-        <h3 style="margin:0 0 6px;font-size:15px;color:#cfe8ff;">Changelog</h3>
-        <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.4;">
-          <li>Adds Favorites and changes</li>
-        </ul>
-      </section>
-
-      <!-- Requirements -->
       <section class="message-card">
         <h3 style="margin:0 0 6px;font-size:15px;color:#cfe8ff;">Requirements</h3>
-        <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.4;">
+        <ul style="margin:0;padding-left:18px;font-size:14px;">
           <li>iOS / iPadOS 18.0 or later</li>
-          <li>Shortcuts app installed (pre-installed on iOS)</li>
-          <li>iCloud account (needed to add the shortcut)</li>
         </ul>
       </section>
 
-      <!-- Navigation -->
       <section class="message-card" style="text-align:center">
-        <a href="previous/" class="btn-link">📦 View Previous Releases</a>
+        <a id="previousBtn" href="previous/" class="btn-link">
+          📦 View Previous Releases
+        </a>
       </section>
     </main>
 
@@ -91,7 +176,7 @@
   </div>
 
   <script>
-    // Detect iOS / iPadOS version
+    // iOS version detection
     function getiOSVersion() {
       if (/iP(hone|od|ad)/.test(navigator.platform)) {
         const match = navigator.userAgent.match(/OS (\d+)_?(\d+)?/);
@@ -102,14 +187,26 @@
       return null;
     }
 
-    const version = getiOSVersion();
-    const btn = document.getElementById('downloadBtn');
+    const ios = getiOSVersion();
 
-    if (version !== null && version < 18.0) {
-      btn.textContent = "Not Supported";
-      btn.style.pointerEvents = "none"; // disables click
-      btn.style.backgroundColor = "#6b7280"; // gray color
-      btn.style.opacity = "0.6";
+    // Disable previous releases on < iOS 18
+    const previousBtn = document.getElementById("previousBtn");
+    if (ios !== null && ios < 18.0) {
+      previousBtn.classList.add("btn-disabled");
+      previousBtn.textContent = "📦 Previous Releases (iOS 18+)";
+    }
+
+    // Battery API (graceful fallback)
+    const batteryEl = document.getElementById("battery");
+
+    if ("getBattery" in navigator) {
+      navigator.getBattery().then(battery => {
+        const update = () => {
+          batteryEl.textContent = "🔋" + Math.round(battery.level * 100) + "%";
+        };
+        update();
+        battery.addEventListener("levelchange", update);
+      });
     }
   </script>
 </body>
